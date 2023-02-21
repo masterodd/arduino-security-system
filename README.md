@@ -4,4 +4,6 @@ Code for the arduino. Manages and controls 4 sensors with activating sound alarm
 # Sensors
 > 2 IR motion sensors
 > 2 Magnet door sensors
-![picture of the control screen on LCD](display.jpg)
+# Pictures
+Main control screen </br>
+![picture of the control screen on LCD](display.png)
