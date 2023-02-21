@@ -3,11 +3,8 @@
 #include<EEPROM.h>
 
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);  
-
 char password[4];
-
 char initial_password[4],new_password[4];
-
 int i,j;
 
 
@@ -27,8 +24,8 @@ bool ir_a, ir_b, d_c, d_d, all_in, ir1, ir2, d1, d2;
 
 
 
-const byte ROWS = 4; //four rows
-const byte COLS = 4; //four columns
+const byte ROWS = 4; 
+const byte COLS = 4; 
 char keys[ROWS][COLS] = {
   {'1','2','3','A'},
   {'4','5','6','B'},
@@ -38,8 +35,8 @@ char keys[ROWS][COLS] = {
 
 d
 
-byte rowPins[ROWS] = {22, 24, 26, 28}; //connect to the row pinouts of the keypad
-byte colPins[COLS] = {30, 32, 34, 36}; //connect to the column pinouts of the keypad
+byte rowPins[ROWS] = {22, 24, 26, 28}; 
+byte colPins[COLS] = {30, 32, 34, 36}; 
 
 Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
 
@@ -63,7 +60,7 @@ void setup()
   pinMode(IR1_SENSOR_PIN, INPUT_PULLUP);
   pinMode(IR2_SENSOR_PIN, INPUT_PULLUP);
   
-  //login deactivated from start
+  
   login = false;
   ses = false;
   ses2 = false;
@@ -82,19 +79,14 @@ void setup()
 
 
   lcd.begin(20,4);
-
   lcd.print(" Welcome");
-
   lcd.setCursor(0,1);
-
   lcd.print("Security system");
-
   delay(2000);
-
   lcd.clear();
 
 
-  initialpassword();
+   initialpassword();
    cursorpos=1;
    Serial.begin(9600);
    
@@ -107,19 +99,19 @@ void loop()
 
 {
 
-doorState1 = digitalRead(DOOR1_SENSOR_PIN); // read state
-doorState2 = digitalRead(DOOR2_SENSOR_PIN); // read state
-irState1 = digitalRead(IR1_SENSOR_PIN); // read state
-irState2 = digitalRead(IR2_SENSOR_PIN); // read state
+doorState1 = digitalRead(DOOR1_SENSOR_PIN); 
+doorState2 = digitalRead(DOOR2_SENSOR_PIN); 
+irState1 = digitalRead(IR1_SENSOR_PIN); 
+irState2 = digitalRead(IR2_SENSOR_PIN); 
 
 Serial.print("\n");
 Serial.print(irState2);
 
   
-if(EEPROM.read(6))if(irState1 == HIGH){alarm=true;ses4 = false;ir1=true;Serial.print("alarm");}
-if(EEPROM.read(7))if(irState2 == HIGH){alarm=true;ses4 = false;ir2=true;Serial.print("alarm");}
-if(EEPROM.read(8))if(doorState1 == HIGH){alarm=true;ses4 = false;d1=true;Serial.print("alarm");}
-if(EEPROM.read(9))if(doorState2 == HIGH){alarm=true;ses4 = false;d2=true;Serial.print("alarm");}  
+if(EEPROM.read(6))if(irState1 == HIGH){alarm=true;ses4 = false;ir1=true;}
+if(EEPROM.read(7))if(irState2 == HIGH){alarm=true;ses4 = false;ir2=true;}
+if(EEPROM.read(8))if(doorState1 == HIGH){alarm=true;ses4 = false;d1=true;}
+if(EEPROM.read(9))if(doorState2 == HIGH){alarm=true;ses4 = false;d2=true;}  
 
 if(!alarm){
   
@@ -178,12 +170,10 @@ key_pressed = keypad.getKey();
   key_pressed = keypad.getKey();
   if(!ses){
  
-       lcd.clear();
-
+      lcd.clear();
       lcd.print("Enter Password");
       lcd.setCursor(0,3);lcd.print("to change PIN(#)");
       lcd.setCursor(0,1);
-
       ses = true;
   }
   
@@ -234,20 +224,14 @@ key_pressed = keypad.getKey();
 
 
       lcd.clear();
-
       lcd.print("Wrong Password");
-
       lcd.setCursor(0,1);
 
 
       delay(2000);
-
       lcd.clear();
-
       lcd.print("Enter Password");
-
       lcd.setCursor(0,1);
-
       i=0;
 
 
@@ -367,13 +351,9 @@ void change()
 {
 
   int j=0;
-
   lcd.clear();
-
   lcd.print("Current Password");
-
   lcd.setCursor(0,1);
-
   while(j<4)
 
   {
@@ -406,13 +386,9 @@ void change()
   {
 
     lcd.clear();
-
     lcd.print("Wrong Password");
-
     lcd.setCursor(0,1);
-
     lcd.print("Try Again");
-
     delay(1000);
 
   }
@@ -422,13 +398,9 @@ void change()
   {
 
     j=0;
-
     lcd.clear();
-
     lcd.print("New Password:");
-
     lcd.setCursor(0,1);
-
     while(j<4)
 
     {
