@@ -1,4 +1,4 @@
-# security-system VF BGAS || Belarusain state academy of communication, Viciebsk department
+# security-system VF BGAS || Belarusian state academy of communication, Viciebsk department
 Code for the arduino. Manages and controls 4 sensors with activating sound alarm using buzzer and providing GUI on the 20x4 LCD.
 4x4 Keypad is used for controls. 
 # Sensors
